@@ -1,0 +1,70 @@
+<html lang="fr">
+<head>
+    <title>Hello {{ name }}</title>
+    <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+</head>
+<body>
+
+{% import 'macros/alertes.html.twig' as utils %}
+
+{# Block pribcipal de l'application #}
+Hello {{ name }}
+{% set collection = [1, 2, 3] %}
+{% set elements = [2, 3] %}
+
+<ul>
+    {% for item in collection %}
+        <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+{% for key, element in elements %}
+    {% if loop.index % 2 %}
+        Element pair
+    {% else %}
+        Element impair
+    {% endif %}
+{% else %}
+    Il n'y a aucun élément à afficher.
+{% endfor %}
+
+{% for i in range(1, 10) %}
+    {{ i }}
+{% endfor %}
+
+{{ 'foo'|capitalize|reverse }}
+{{ '<h1>Foo</h1>'|raw }}
+{{ '<h1>Bar</h1>'|e }}
+
+{% autoescape %}
+    {% set hello = '<strong>Hello</strong>' %}
+    {% set hola = '<strong>Hola</strong>' %}
+
+    {{ false ? '<strong>Hola</strong>' : hello|raw }}
+    does not render the same as
+    {{ false ? hola : hello|raw }}
+    but renders the same as
+    {{ (false ? hola : hello)|raw }}
+{% endautoescape %}
+<br>
+<br>
+
+{% set tableau, article = [1,2,3], {
+    'titre': 'Etendre Twig',
+    'contenu': 'Il est possible ...'
+} %}
+
+{{ tableau.2 ~ ' ' ~ tableau|first }}
+
+{{ article.titre }}
+{{ article.contenu }}
+
+{{ 10.7567|price(1) }}
+<br>
+
+{{ utils.alert('Attention!', 'warning') }}
+{{ utils.alert('Erreur fatale', 'danger') }}
+
+
+
+</body>
+</html>

@@ -6,10 +6,10 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HelloController extends AbstractController
 {
-    #[Route('/twig/hello/{name}', name: "Zozor")]
-    public function helloWorld(string $name)
+    #[Route('/hello/{name}', name: "hello")]
+    public function hello(string $name)
     {
-        return $this->render('twig/hello.html.twig', [
+        return $this->render('hello.html.twig', [
             'name' => $name
         ]);
     }

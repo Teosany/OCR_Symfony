@@ -1,0 +1,17 @@
+{# /templates/produit.html.twig #}
+{% extends 'parent.html.twig' %}
+
+{% block titre %}Page Produit{% endblock%}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="produit.css" type="text/css" media="all" />
+{% endblock%}
+
+{% block contenuPrincipal %}
+    <p>Ceci est la page Produit!</p>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="build/produit.js" />
+{% endblock %}
