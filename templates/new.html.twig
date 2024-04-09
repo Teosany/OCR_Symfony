@@ -1,16 +1,21 @@
 <html lang="">
 <head>
     <title>df</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">#}
 </head>
-<body>
-{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-{{ form_row(form.title) }}
-{{ form_row(form.content) }}
-{{ form_row(form.author) }}
 
-<button type="submit" class="btn btn-primary">Créer</button>
-{{ form_end(form) }}
-
-</body>
+{% block body %}
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate',
+        'class': 'col-lg-5'}}) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.content) }}
+    {# {{ csrf_token('intention') }} #}
+    {{ form_row(form.author) }}
+    {{ form_errors(form) }}
+    {{ form_rest(form) }}
+    <button type="submit" class="btn btn-primary">Créer</button>
+    {{ form_end(form) }}
+{% endblock body %}
 </html>
-{#{{ form(form) }}#}
+{# {{ form(form) }} #}
